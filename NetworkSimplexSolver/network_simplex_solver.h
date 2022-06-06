@@ -1,23 +1,17 @@
-/* This is an implementation of Network Simplex Algorithm
- * @Author: Jinyue Su(s.jinyue@gmail.com)
- * https://github.com/splintersu/NetworkSimplex
- * 
- * Network Simplex Algorithm is for Minimum-Cost-Flow problem
- * Problem Setting:
- * Denotes the network G = (N, A)
- * input: c_{i, j} for cost, u_{i, j} for capacity
- * the goal: min z(x) = sum_{(i, j) \in A} c_{i,j} \cdot x_{i,j}
- * satisfying:
+/* Implementação do algoritmo Network Simplex para resolução de sistemas lineares
+ * Algoritmo Simplex de Rede para resolução de problemas de Fluxo de Custo Mínimo
+ * Problema:
+ * Indicar rede G = (N, A)
+ * Entrada: c_{i, j} for cost, u_{i, j} for capacity
+ * Objetivo: min z(x) = sum_{(i, j) \in A} c_{i,j} \cdot x_{i,j}
+ * satisfazendo:
  * 0 \leq x_{i, j} \leq u_{i, j} \forall {i, j} \in A
  * sum_{(i, j) \in A} x_{i, j} - sum_{(k, i) in \A} x_{k, i} = 0
- * 
- * Note that the problem setting is a little different from the one on wikipedia
- * This implementation follows
- * http://www.unc.edu/depts/stat-or/courses/provan/STOR724_web/lect14_simp.pdf
- * Note that, if there is no negative loop, it's possible to reduce Maximum-Flow-Minimum-Cost to MCFP:
- * just add an arc from sink to source, with infinity capacity and
- * -INF(some large enough value, take care not to cause overflow) weight
- * then call MCFP solver, decode the true flow and true cost from the returned cost
+ 
+ * Observe que, se não houver loop negativo, é possível reduzir o custo máximo-fluxo-mínimo para MCFP:
+ * basta adicionar um arco com capacidade infinita e
+ * -INF(algum valor grande o suficiente, tome cuidado para não causar estouro) peso
+ * em seguida, chame o solver do MCFP, decodifique o fluxo verdadeiro e o custo verdadeiro do custo retornado
  */
 
 #include <vector>
@@ -37,10 +31,10 @@ public:
 	/* @param n: the number of nodes
 	 */
 
-	/* @param n: number of nodes in the network
-	 * @param arcs: Arcs in the network
-	 * NOTE: The virtual reverse arc will be handled within this function,
-	 * don't bother to add both arcs.
+	/* @param n: número de nós na rede
+	 * @param arcs: arcos da rede
+	 * NOTE: O arco reverso virtual será tratado dentro desta função,
+	 * não se preocupe em adicionar ambos os arcos.
 	 */
 	static cost_t Solve(pint_t n, const std::vector<Arc>& arcs);
 private:
