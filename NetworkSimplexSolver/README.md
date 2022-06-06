@@ -1,6 +1,6 @@
 # Network Simplex
 
-Algoritmo Network Simplexp ara o problema de fluxo de custo mínimo
+Algoritmo Network Simplex para o problema de fluxo de custo mínimo
 
 Problema:
 
