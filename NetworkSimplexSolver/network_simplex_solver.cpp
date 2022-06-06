@@ -62,12 +62,12 @@ public:
 		cap_t capacity;
 		cost_t cost_per_unit;
 
- 		// These Arcs are stored in Linked-List.
- 		// We cannot use pointer here since vector doesn't give persistent memory address.
+ 		// Esses arcos são armazenados na Linked-List.
+ 		// Não podemos usar ponteiro aqui, pois o vetor não fornece endereço de memória persistente.
 		pint_t next, pre;
 
-		// It's guaranteed by the caller that
-		// (the index of an arc) xor (the index of the reverse arc) = 1
+		// É garantido pelo chamador que
+		// (o índice de um arco) xor (o índice do arco reverso) = 1
 
 		Arc(NetworkSimplexSolver::Arc arc):
 		st(arc.st), ed(arc.ed), capacity(arc.capacity), cost_per_unit(arc.cost_per_unit)
@@ -118,7 +118,7 @@ public:
 		headn = headt = vector<pint_t>(n, 0);
 		arcs = vector<Arc>{Arc(), Arc()};
 		tree_edge = vector<bool>{false, false};
-		// to make sure the paired-arcs have indices: (2, 3), (4, 5), ...
+		// para garantir que os arcos emparelhados tenham índices: (2, 3), (4, 5), ...
 	}
 
 	static Solution GetZeroInitialSolution(pint_t n, const vector<NetworkSimplexSolver::Arc>& arcs);
@@ -213,7 +213,7 @@ private:
 		}
 
 		if(min_c_pi == 0)
-			// Cannot find
+			// Não encontrado
 			return 0;
 		return min_arcindex;
 	}
