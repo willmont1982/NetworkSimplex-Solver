@@ -3,9 +3,11 @@
 
 class NetworkSimplexSolver {
 public:
-	using cap_t = unsigned int; // type of capacity
-	using cost_t = long long; // type of cost
-	using pint_t = unsigned int; // type of positive integer
+	using cap_t = unsigned int; // tipo de capacidade
+
+	using cost_t = long long; // tipo de custo
+
+	using pint_t = unsigned int; // tipo de inteiro positivo
 
 	struct Arc {
 		pint_t st, ed;
